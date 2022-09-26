@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="index.html"><div class="project1"><</div></a>
+    <div class="wrap">
+        <section>
+			<h1 align="center">JAVASCRIPT OOP</h1>
+			<form action="#">
+				<label for="fname">First Name</label>
+				<input type="text" id="fname" />
+				<label for="lname">Last Name</label>
+				<input type="text" id="lname" />
+				<label for="age">Age</label>
+				<input type="number" id="age" />
+				<label for="plag">Programing Language</label>
+				<input type="text" id="plang" />
+				<div>
+					<button type="submit" id="userbtn">Submit</button>
+				</div>
+			</form>
+                <div>
+                  <p id="showUser"></p>
+                </div>
+		</section>
+    </div>
+    <script>
+        class user{
+            constructor(firstname, lastname, age, programingLanguage){
+                this.firstname = firstname
+                this.lastname = lastname
+                this.age = age
+                this.programingLanguage = programingLanguage
+            }
+            getUser = () => {
+                return(`my name is ${this.firstname} ${this.lastname}, i am  ${this.age} years old, i am engage with ${this.programingLanguage} Programing Language`)
+            }
+        }
+
+
+        const firstUser = new user("musa", "abdul", 10, "Javascript")
+        console.log(firstUser.getUser())
+        console.log(firstUser.firstname)
+
+        const userbtn = document.getElementById("userbtn");
+        const showUser = document.getElementById("showUser");
+
+        userbtn.addEventListener('click', () =>{
+        const firstname = document.getElementById("fname").value;
+        const lastname = document.getElementById("lname").value;
+        const age = document.getElementById("age").value;
+        const programingLanguage = document.getElementById("plang").value;
+        const newUser = new user(firstname, lastname, age, programingLanguage)
+        showUser.innerHTML = newUser.getUser()
+        clearFields() 
+
+        })
+
+        const clearFields = () =>{
+                document.getElementById("fname").value = "";
+                document.getElementById("lname").value = "";
+                document.getElementById("age").value = "";
+                document.getElementById("plang").value = "";
+        }
+    </script>
+</body>
+</html>
